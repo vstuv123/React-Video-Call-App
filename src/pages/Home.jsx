@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
-    let APP_ID = import.meta.env.APP_ID;
+    let APP_ID = "2bf870ea586b48c180a86ed181958293";
   let token = null;
   let uid = String(Math.floor(Math.random() * 10000));
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,6 +18,10 @@ const Home = () => {
       navigate('/lobby');
     }
   }, [navigate]);
+
+  let queryString = window.location.search;
+  let urlParams = new URLSearchParams(queryString);
+  let roomId = urlParams.get("room");
 
   let client;
   let channel;
@@ -202,14 +205,14 @@ const Home = () => {
       </div>
       <div id="controls">
         <div className="control-container" id="camera-btn" onClick={toggleCamera}>
-            <img src="camera.png" alt="camera" />
+            <img src="/React-Video-Call-App/camera.png" alt="camera" />
         </div>
         <div className="control-container" id="mic-btn" onClick={toggleMic}>
-            <img src="mic.png" alt="camera" />
+            <img src="/React-Video-Call-App/mic.png" alt="camera" />
         </div>
         <a href="/lobby">
             <div className="control-container" id="leave-btn">
-                <img src="phone.png" alt="camera" />
+                <img src="/React-Video-Call-App/phone.png" alt="camera" />
             </div>
         </a>
       </div>
