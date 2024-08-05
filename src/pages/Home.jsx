@@ -1,4 +1,6 @@
 import AgoraRTM from "agora-rtm-sdk";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
@@ -6,13 +8,17 @@ const Home = () => {
   let token = null;
   let uid = String(Math.floor(Math.random() * 10000));
 
-  let queryString = window.location.search;
-  let urlParams = new URLSearchParams(queryString);
-  let roomId = urlParams.get("room");
+  const navigate = useNavigate();
 
-  if (!roomId) {
-    window.location = '/lobby';
-  }
+  useEffect(() => {
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let roomId = urlParams.get("room");
+
+    if (!roomId) {
+      navigate('/lobby');
+    }
+  }, [navigate]);
 
   let client;
   let channel;
