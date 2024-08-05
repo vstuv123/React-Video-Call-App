@@ -1,6 +1,6 @@
 import AgoraRTM from "agora-rtm-sdk";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Home = () => {
@@ -210,11 +210,11 @@ const Home = () => {
         <div className="control-container" id="mic-btn" onClick={toggleMic}>
             <img src="/React-Video-Call-App/mic.png" alt="camera" />
         </div>
-        <a href="/lobby">
+        <Link to="/lobby">
             <div className="control-container" id="leave-btn">
                 <img src="/React-Video-Call-App/phone.png" alt="camera" />
             </div>
-        </a>
+        </Link>
       </div>
     </>
   )
